@@ -1,0 +1,12 @@
+
+# 训练集图片的路径
+train: ../2_yolo_dataset/images/train
+
+# 验证集图片的路径
+val: ../2_yolo_dataset/images/val
+
+# 类别数量 (Number of Classes)
+nc: 3
+
+# 类别名称 ( 0='清醒', 1='中度疲劳', 2='重度疲劳')
+names: ['清醒', '中度疲劳', '重度疲劳']
