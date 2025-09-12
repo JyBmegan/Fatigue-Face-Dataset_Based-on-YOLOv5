@@ -83,7 +83,7 @@ The biggest takeaway is that all our models were thrown off by the fact that our
 
 The model was fast and could run in real-time, but its accuracy was very uneven.
 
-| Category | Instances | Precision (P) | Recall (R) | AP@0.5 |
+| Category | Instances | Precision | Recall (R) | AP@0.5 |
 | :--- | :--- | :--- | :--- | :--- |
 | Awake | 1395 | 0.42 | **1.0** | 0.611 |
 | Moderate Fatigue | 736 | **0.957** | 0.18 | 0.681 |
@@ -98,8 +98,8 @@ The model was fast and could run in real-time, but its accuracy was very uneven.
 
 | Category | Precision | Recall | F1-Score | Support |
 | :--- | :--- | :--- | :--- | :--- |
-| Moderate Fatigue | 0.33 | 0.25 | 0.29 | 4 |
 | Awake | 0.62 | 0.62 | 0.62 | 8 |
+| Moderate Fatigue | 0.33 | 0.25 | 0.29 | 4 |
 | Severe Fatigue | 0.00 | 0.00 | 0.00 | 1 |
 | **Weighted Avg** | **0.49** | **0.46** | **0.47** | **13** |
 
@@ -112,8 +112,8 @@ The model was fast and could run in real-time, but its accuracy was very uneven.
 
 | Category | Precision | Recall | F1-Score | Support |
 | :--- | :--- | :--- | :--- | :--- |
-| Moderate Fatigue | 0.00 | 0.00 | 0.00 | 4 |
 | Awake | 0.50 | 0.62 | 0.56 | 8 |
+| Moderate Fatigue | 0.00 | 0.00 | 0.00 | 4 |
 | Severe Fatigue | 0.00 | 0.00 | 0.00 | 1 |
 | **Weighted Avg** | **0.31** | **0.38** | **0.34** | **13** |
 
