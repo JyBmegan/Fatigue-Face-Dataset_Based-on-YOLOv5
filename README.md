@@ -37,7 +37,7 @@ We created this dataset by recording people before and after they completed a ta
     * **Training Set**: 7,918 images from 31 people.
     * **Validation Set**: 2,286 images from the remaining 8 people.
 
-**Download the Dataset here: https://drive.google.com/drive/folders/1rqwfbrj8Nvu76CV0XmQ6mrHOp6x2gLja?usp=sharing **
+**Download the Dataset here**: https://drive.google.com/drive/folders/1rqwfbrj8Nvu76CV0XmQ6mrHOp6x2gLja?usp=sharing 
 
 ### Models and Methods
 
