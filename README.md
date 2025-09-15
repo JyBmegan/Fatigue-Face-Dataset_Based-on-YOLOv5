@@ -80,7 +80,7 @@ The biggest takeaway is that all our models were thrown off by the fact that our
 
 ### Model 1: YOLOv5
 
-The model was fast and could run in real-time, but its accuracy was very uneven.
+**Overall Accuracy**: 46.70%
 
 | Category | Instances | Precision | Recall (R) | AP@0.5 |
 | :--- | :--- | :--- | :--- | :--- |
