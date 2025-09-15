@@ -8,11 +8,6 @@ We tried out three different ways to sort fatigue into three levels: **Awake**, 
 2.  **Random Forest (PERCLOS + Blink Rate)**: A simpler machine learning model that analyzes video directly using well-known eye-tracking metrics.
 3.  **Random Forest (Multi-indicator)**: Another video-based model where we tested out some extra behavioral features.
 
-### What's Interesting About This Project
-
-* **A New Dataset**: We built our own dataset from scratch, called the **Fatigue-Face-Dataset**, using Chinese participants. We had them perform a mentally draining task to make sure we were capturing real signs of fatigue.
-* **Grounded in Psychology**: We didn't just guess the fatigue levels. The labels for our data were based on scores from two established psychological questionnaires: the SOFI-C and the KSS. This gives our data a solid, scientific foundation.
-* **Multiple Methods**: We didn't just bet on one horse. We tried both a complex deep learning approach (YOLOv5) and a more traditional machine learning one (Random Forest) to see what worked best.
 
 ### Why We Did This
 
@@ -20,7 +15,7 @@ Mental fatigue is a real problem that affects everything from driving safety to 
 
 We thought using a simple camera to analyze facial expressions and eye movements could be a better way forward. We noticed that most existing work didn't have data on Chinese populations, usually just sorted people into "tired" or "not tired," and often wasn't backed by proper psychological standards. We wanted to try and fix those issues.
 
-### Our Dataset: Fatigue-Face-Dataset
+### The dataset: Fatigue-Face-Dataset
 
 We created this dataset by recording people before and after they completed a task designed to wear them out mentally.
 
@@ -37,16 +32,18 @@ We created this dataset by recording people before and after they completed a ta
     * **Training Set**: 7,918 images from 31 people.
     * **Validation Set**: 2,286 images from the remaining 8 people.
 
-**Download the Dataset here**: https://drive.google.com/drive/folders/1rqwfbrj8Nvu76CV0XmQ6mrHOp6x2gLja?usp=sharing 
+### Download the Dataset
 
-### Models and Methods
+**Images**: https://drive.google.com/drive/folders/1rqwfbrj8Nvu76CV0XmQ6mrHOp6x2gLja?usp=sharing 
+**Raw Label**: https://drive.google.com/drive/folders/1PZ-UIrUja2R1Ei6dK14Xc8lkOEj8jyTo?usp=share_link
+**Raw Videos**: https://drive.google.com/drive/folders/1RU2QeS1u-Ntll0SLTLb5yj92IE54eVok?usp=share_link
+
+### Training
 
 #### 1. YOLOv5 (Image-Based Detection)
 
 For this method, we used the popular YOLOv5 model to find a face in a picture and classify its fatigue level at the same time.
 
-* **How it Works**: We took a standard YOLOv5s model that was already trained on a huge public dataset (COCO) and then fine-tuned it using our own fatigue images.
-* **Training**: We trained the model on Google Colab with an NVIDIA T4 GPU.
 * **Training Command**:
     ```shell
     !python train.py \
@@ -90,7 +87,6 @@ The model was fast and could run in real-time, but its accuracy was very uneven.
 | Severe Fatigue | 154 | 0.0134 | 0.00649 | 0.11 |
 | **All** | **2285** | **0.463** | **0.395** | **0.467** |
 
-**In plain English**: The model essentially learned that the safest bet was to guess "Awake" most of the time. This gave it a perfect score for finding all the awake people (1.0 recall) but meant it was often wrong when it did so (0.42 precision). It almost completely failed on the "Severe Fatigue" category because it saw so few examples.
 
 #### Model 2: RandomForest (PERCLOS + Blink Rate)
 
@@ -104,8 +100,6 @@ The model was fast and could run in real-time, but its accuracy was very uneven.
 | **Weighted Avg** | **0.49** | **0.46** | **0.47** | **13** |
 
 
-**In plain English**: Just like YOLOv5, it did okay with the "Awake" group but was completely unable to identify "Severe Fatigue".
-
 #### Model 3: RandomForest (Multi-indicator)
 
 **Overall Accuracy**: 38.46%
@@ -117,15 +111,6 @@ The model was fast and could run in real-time, but its accuracy was very uneven.
 | Severe Fatigue | 0.00 | 0.00 | 0.00 | 1 |
 | **Weighted Avg** | **0.31** | **0.38** | **0.34** | **13** |
 
-**In plain English**: The extra features seemed to add more noise than useful information, and the model couldn't identify any of the fatigue states correctly.
-
-### Where To Go From Here
-
-This project was a good proof-of-concept and gave us a valuable dataset to work with. But to build something that actually works well, we have a clear path forward:
-
-1.  **Fix the Data Imbalance**: The number one priority is to balance our dataset. We can do this by using techniques like **SMOTE**, which creates synthetic examples of the under-represented classes (like "Severe Fatigue") to give the model more to learn from. We could also try **cost-sensitive learning**, which tells the model that making a mistake on a fatigue case is a bigger deal than making a mistake on an awake case.
-2.  **Use a Better Tool for the Job**: YOLOv5 is a general-purpose object detector. A better choice might be a **Fine-Grained Visual Classification (FGVC)** model, which is specifically designed to notice the very small details that separate classes—like the subtle difference in eye droop between mild and severe fatigue.
-3.  **Get More Data**: The best fix is always more data. We need to collect more videos, especially of people who are genuinely very tired, to give our models a better chance to learn.
 
 ### Acknowledgements
 
