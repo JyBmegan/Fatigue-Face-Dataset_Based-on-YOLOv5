@@ -1,4 +1,4 @@
-# Non-contact Psychological Fatigue Assessment using Computer Vision
+# Non-contact Psychological Fatigue Assessment
 
 This repository holds the code and data for our project on assessing psychological fatigue, which we submitted to the "Hou Can Cup" challenge. Our goal was to build a tool that could spot mental fatigue without using subjective surveys or cumbersome physical sensors, relying only on computer vision.
 
